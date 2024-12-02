@@ -1,0 +1,114 @@
+body {
+  font-family: Arial, sans-serif;
+  text-align: center;
+  padding: 20px;
+}
+
+#pokemon-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.pokemon-card {
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  margin: 10px;
+  padding: 10px;
+  text-align: center;
+  width: 150px;
+  background-color: #f9f9f9;
+  cursor: pointer;
+}
+
+.pokemon-card:hover {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  transform: translateY(-5px);
+  transition: all 0.3s ease;
+}
+
+.pokemon-card img {
+  width: 100px;
+  height: 100px;
+}
+
+#pokemon-details {
+  display: none;
+  margin-top: 20px;
+}
+
+.details-card {
+  border: 2px solid #ccc;
+  border-radius: 8px;
+  padding: 20px;
+  text-align: center;
+  max-width: 400px;
+  margin: 20px auto;
+  background-color: #fdfdfd;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.details-card img {
+  width: 150px;
+  height: 150px;
+}
+
+.back-button, .home-button {
+  display: block;
+  margin: 10px auto;
+  padding: 10px 20px;
+  border: none;
+  background-color: #de0f0f;
+  color: #fff;
+  font-size: 16px;
+  border-radius: 5px;
+  cursor: pointer;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.back-button:hover, .home-button:hover {
+  background-color: #de0f0f;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.search-container {
+  margin-bottom: 20px;
+}
+
+.search-container input {
+  padding: 10px;
+  width: 250px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  margin-right: 10px;
+}
+
+.search-container button {
+  padding: 10px 20px;
+  border: none;
+  background-color: #de0f0f;
+  color: white;
+  font-size: 16px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.search-container button:hover {
+  background-color: #b00b0b;
+}
+
+.search-container .home-button {
+  background-color: #de0f0f;
+}
+
+.search-container .home-button:hover {
+  background-color: #b00b0b;
+}
+
+#loading-indicator {
+  display: none;
+  margin-top: 20px;
+  font-size: 18px;
+  color: #de0f0f;
+}/*# sourceMappingURL=styles.css.map */
