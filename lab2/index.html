@@ -3,7 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>React CDN Example</title>
+    <title>React - Pokemon</title>
+    <link rel="stylesheet" href="style.css" />
+
 
     <!-- Include React -->
     <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
@@ -12,9 +14,12 @@
     <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
 </head>
 <body>
-    <div id="root"></div>
-    <script type="text/babel" src="/components/Button.js"></script>
+    <div id="pokemonList"></div>
+    <div id="pokemonDetails"></div>
+
     <script type="text/babel" src="/components/PokemonList.js"></script>
+    <script type="text/babel" src="/components/PokemonOnList.js"></script>
+    <script type="text/babel" src="/components/PokemonDetails.js"></script>
     <script type="text/babel" src="ReactApp.js"></script>
 </body>
 
