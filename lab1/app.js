@@ -9,7 +9,7 @@ const POKEMON_URL = 'https://pokeapi.co/api/v2/pokemon/';
 let allPokemonsData = [];
 
 const loadAllPokemons = () => {
-    loadingIndicator.style.display = 'block'; // wskaźnik ladowania
+    loadingIndicator.style.display = 'block';
 
     fetch(`${POKEMON_URL}?limit=20`)
         .then(response => response.json())
@@ -21,7 +21,7 @@ const loadAllPokemons = () => {
             Promise.all(pokemonPromises).then(pokemonDetails => {
                 allPokemonsData = pokemonDetails;
                 displayAllPokemons(allPokemonsData);
-                loadingIndicator.style.display = 'none'; // ukrywa wskaźnik ładowania
+                loadingIndicator.style.display = 'none';
             });
         });
 };
@@ -44,8 +44,8 @@ const displayAllPokemons = (pokemons) => {
 };
 
 const displayPokemonDetails = (pokemon) => {
-    pokemonListEl.style.display = 'none'; // Ukrywa liste
-    pokemonDetailsEl.style.display = 'block'; // Pokazuje szczegóły
+    pokemonListEl.style.display = 'none';
+    pokemonDetailsEl.style.display = 'block';
     const pokemonNumber = pokemon.id;
     const stats = pokemon.stats.reduce((acc, stat) => {
         acc[stat.stat.name] = stat.base_stat;
@@ -69,17 +69,17 @@ const displayPokemonDetails = (pokemon) => {
 
     const backToHomeButton = document.getElementById('back-to-home-btn');
     backToHomeButton.addEventListener('click', () => {
-        pokemonListEl.style.display = 'flex'; // Pokaże liste
-        pokemonDetailsEl.style.display = 'none'; // Ukryje szczegóły
+        pokemonListEl.style.display = 'flex';
+        pokemonDetailsEl.style.display = 'none';
     });
 };
 
 const searchPokemon = () => {
-    loadingIndicator.style.display = 'block'; // wskaźnik ładowania
+    loadingIndicator.style.display = 'block';
     const query = searchInput.value.trim().toLowerCase();
     if (!query) {
         pokemonListEl.innerHTML = '<p>Please enter a Pokémon name!</p>';
-        loadingIndicator.style.display = 'none'; // ukrywam wskaźnik ładowania
+        loadingIndicator.style.display = 'none';
         return;
     }
 
@@ -97,12 +97,12 @@ const searchPokemon = () => {
             return response.json();
         })
         .then(pokemonData => {
-            displayPokemon(pokemonData); // Wyświetlam wyszukanego Pokemonka :)
-            loadingIndicator.style.display = 'none'; // Ukrywam wskaźnik ładowania
+            displayPokemon(pokemonData);
+            loadingIndicator.style.display = 'none';
         })
         .catch(error => {
             pokemonListEl.innerHTML = `<p>${error.message}</p>`;
-            loadingIndicator.style.display = 'none'; // Ukrywam wskaźnik ładowania
+            loadingIndicator.style.display = 'none';
         });
 };
 
@@ -124,11 +124,11 @@ const displayPokemon = (pokemon) => {
 searchBtn.addEventListener('click', searchPokemon);
 
 backHomeBtn.addEventListener('click', () => {
-    searchInput.value = ''; // Wyczyści pole wyszukiwania!!!
-    pokemonListEl.style.display = 'flex'; // Pokaże listę pokemonow
-    pokemonDetailsEl.style.display = 'none'; // Ukryje szczegóły pokemona
-    pokemonListEl.innerHTML = ''; // Opróżni listę przed ponownym załadowaniem
-    loadAllPokemons(); // Ponownie załaduj wszystkie pokemony
+    searchInput.value = '';
+    pokemonListEl.style.display = 'flex';
+    pokemonDetailsEl.style.display = 'none';
+    pokemonListEl.innerHTML = '';
+    loadAllPokemons();
 });
 
 document.addEventListener('DOMContentLoaded', loadAllPokemons);

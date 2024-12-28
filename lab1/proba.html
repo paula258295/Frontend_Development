@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pokemon GO Helper</title>
+    <link rel="stylesheet" href="styles.css">
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 20px;
+        }
+
+        #search {
+            padding: 10px;
+            font-size: 16px;
+            width: 200px;
+        }
+
+        #search-btn {
+            padding: 10px 15px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        #pokemon-list {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        .pokemon-card {
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            margin: 10px;
+            padding: 10px;
+            text-align: center;
+            width: 150px;
+            background-color: #f9f9f9;
+        }
+
+        .pokemon-card img {
+            width: 100px;
+            height: 100px;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- <div id="pokemon"></div> -->
+    <!-- <button id="Load-more">Load some Pokemons</button> -->
+    <h1>Pokémon Finder</h1>
+    <input type="text" id="search" placeholder="Search Pokémon by name" />
+    <button id="search-btn">Search</button>
+    <div id="pokemon-list"></div>
+
+    <script>
+        // const pokemonEl = document.getElementById('pokemon');
+        // const loadMore = document.getElementById('Load-more')
+        // const POKEMON_URL = 'https://pokeapi.co/api/v2/pokemon/';
+
+        // const loadSomePokemons = () => {
+        //     fetch(POKEMON_URL)
+        //         .then(response => response.json())
+        //         // .then(responseJson => console.log(responseJson))
+        //         .then(responseJson => {
+        //             for (let pokemon of responseJson.results) {
+        //                 // console.log(`Name: ${pokemon.name}, URL: ${pokemon.url}`);
+        //                 const onePokemon = document.createElement('p')
+        //                 onePokemon.innerText = pokemon.name
+        //                 pokemonEl.append(onePokemon)
+        //             };
+        //         });
+        // }
+        
+
+        //     loadMore.addEventListener('click', () => {
+        //         loadSomePokemons()
+        //     })
+        const pokemonListEl = document.getElementById('pokemon-list');
+        const searchInput = document.getElementById('search');
+        const searchBtn = document.getElementById('search-btn');
+        const POKEMON_URL = 'https://pokeapi.co/api/v2/pokemon/';
+
+        const loadAllPokemons = () => {
+            fetch(`${POKEMON_URL}?limit=20`) // Pobiera pierwszych 20 Pokémonów
+                .then(response => response.json())
+                .then(responseJson => {
+                    const pokemonPromises = responseJson.results.map(pokemon =>
+                        fetch(pokemon.url).then(res => res.json()) // Pobiera szczegóły każdego Pokémona
+                    );
+
+                    // Po zakończeniu wszystkich zapytań wyświetla Pokémony
+                    Promise.all(pokemonPromises).then(pokemonDetails => {
+                        displayAllPokemons(pokemonDetails);
+                    });
+                });
+        };
+
+        // Funkcja do wyświetlania listy Pokémonów
+        const displayAllPokemons = (pokemons) => {
+            pokemonListEl.innerHTML = ''; // Czyści poprzednie dane
+            pokemons.forEach(pokemon => {
+                const pokemonCard = document.createElement('div');
+                pokemonCard.classList.add('pokemon-card');
+                pokemonCard.innerHTML = `
+                    <img src="${pokemon.sprites.front_default}" alt="${pokemon.name}" />
+                    <p>${pokemon.name}</p>
+                `;
+                pokemonListEl.appendChild(pokemonCard);
+            });
+        };
+
+        const searchPokemon = () => {
+            const query = searchInput.value.trim().toLowerCase();
+            if (!query) {
+                pokemonListEl.innerHTML = '<p>Please enter a Pokémon name!</p>';
+                return;
+            }
+
+            fetch(`${POKEMON_URL}${query}`)
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Pokémon not found!');
+                    }
+                    return response.json();
+                })
+                .then(pokemonData => {
+                    displayPokemon(pokemonData);
+                })
+                .catch(error => {
+                    pokemonListEl.innerHTML = `<p>${error.message}</p>`;
+                });
+        };
+
+        const displayPokemon = (pokemon) => {
+            pokemonListEl.innerHTML = '';
+            const pokemonCard = document.createElement('div');
+            pokemonCard.classList.add('pokemon-card');
+            pokemonCard.innerHTML = `
+                <img src="${pokemon.sprites.front_default}" alt="${pokemon.name}" />
+                <p>${pokemon.name}</p>
+            `;
+            pokemonListEl.appendChild(pokemonCard);
+        };
+
+        searchBtn.addEventListener('click', searchPokemon);
+
+        // Wczytuje Pokémony na główną stronę po załadowaniu
+        document.addEventListener('DOMContentLoaded', loadAllPokemons);
+    </script>
+</body>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- <body>
+    <header>
+        <h1>Pokemon</h1>
+        <input type="text" id="search" placeholder="Search...">
+    </header>
+
+    <main>
+        <section id="pokemon-list-section">
+            <h2>List</h2>
+            <ul id="pokemon-list"></ul>
+        </section>
+
+        <section id="pokemon-details-section">
+            <h2>Pokemon Details</h2>
+            <div id="pokemon-details">
+                <p>Select a Pokemon to see details</p>
+            </div>
+        </section>
+    </main>
+
+    <div id="loading" hidden>Loading...</div>
+
+    <script src="app.js"></script>
+</body> -->
+</html>

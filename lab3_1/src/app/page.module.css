@@ -1,0 +1,29 @@
+.header {
+    background-color: #e50808; /* Zielony kolor tła */
+    padding: 10px 20px;
+    display: flex;
+    justify-content: center;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+  }
+  
+  .nav {
+    display: flex;
+    gap: 20px; /* Odstęp między linkami */
+  }
+  
+  .nav-link {
+    text-decoration: none;
+    color: white;
+    font-size: 18px;
+    font-weight: bold;
+    padding: 8px 12px;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+  }
+
+  .main-content {
+    padding-bottom: 100px;
+  }

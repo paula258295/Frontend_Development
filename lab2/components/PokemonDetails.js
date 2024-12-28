@@ -10,7 +10,7 @@ function PokemonDetails(props) {
     }, {});
 
     return (
-        <div class="details-card"> 
+        <div className="details-card"> 
             <h2>{props.pokemon.name.toUpperCase()} (#{props.pokemon.id})</h2>
             <img src={props.pokemon.sprites.front_default} />
             <p><strong>Height:</strong> {props.pokemon.height / 10} m</p>
@@ -20,7 +20,7 @@ function PokemonDetails(props) {
             <p><strong>Attack:</strong> {stats.attack}</p>
             <p><strong>Defense:</strong> {stats.defense}</p>
             <p><strong>Speed:</strong> {stats.speed}</p>
-            <button class="button" onClick={onClick}>Go Back</button>
+            <button className="button" onClick={onClick}>Go Back</button>
         </div>
     );
 }

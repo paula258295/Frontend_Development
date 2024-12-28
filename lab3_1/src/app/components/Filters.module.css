@@ -1,0 +1,52 @@
+.filter-container {
+    padding: 1rem;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    width: 360px;
+    margin: 20px auto;
+}
+
+.input {
+    border-radius: 4px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 1rem;
+}
+
+.type-select {
+    margin-right: 6px;
+    margin-left: 6px;
+    background-color: #ff5c5c; /* Jasno czerwony */
+    border-color: #d40000; /* Ciemniejszy odcień czerwonego */
+    border-radius: 4px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 1rem;
+    /* padding: 0.8rem; */
+    color: white;
+    /* width: 100%; */
+    box-sizing: border-box;
+    transition: background-color 0.3s, border-color 0.3s;
+}
+
+.type-select:hover {
+    background-color: red;
+}
+
+.limit-select {
+    background-color: #ff5c5c; /* Jasno czerwony */
+    border-color: #d40000; /* Ciemniejszy odcień czerwonego */
+    border-radius: 4px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 1rem;
+    /* padding: 0.8rem; */
+    color: white;
+    box-sizing: border-box;
+    transition: background-color 0.3s, border-color 0.3s;
+}
+
+.limit-select:hover {
+    background-color: red;
+}
+
+
+

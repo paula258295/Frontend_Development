@@ -1,0 +1,64 @@
+/* PokemonDetails.module.css */
+
+.details-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #f9f9f9;
+    border: 2px solid #ddd;
+    border-radius: 8px;
+    padding: 20px;
+    max-width: 400px;
+    margin: 20px auto;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    font-family: Arial, sans-serif;
+    margin-top: 100px;
+}
+
+.details-card img {
+    width: 200px;
+    height: 200px;
+    object-fit: contain;
+    margin-bottom: 20px;
+}
+
+.details-card h2 {
+    margin: 0;
+    color: #333;
+    font-size: 28px;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.details-card p {
+    font-size: 16px;
+    color: #555;
+    margin: 5px 0;
+}
+
+.details-card strong {
+    font-weight: bold;
+    color: #333;
+}
+
+/* Style for the Add to Favorites button */
+.add-to-fav-button {
+    background-color: #ea3699;
+    color: white;
+    font-size: 16px;
+    padding: 10px 20px;
+    margin-top: 15px;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.add-to-fav-button:hover {
+    background-color: #dc5aa1;
+}
+
+.add-to-fav-button:focus {
+    outline: none;
+}

@@ -19,8 +19,8 @@ function App(props) {
         <div>
             <h1>Pokemon searcher</h1>
             <input type="text" id="search-input" placeholder="Enter Pokemon name..."/>
-            <button class="button" onClick={onClick}>Search</button>
-            <button class="button" onClick={onClickMainPage}>Main Page</button>
+            <button className="button" onClick={onClick}>Search</button>
+            <button className="button" onClick={onClickMainPage}>Main Page</button>
             {props.error?<div>{props.error}</div>:null}
             <PokemonList pokemons={props.pokemons} />
         </div>
